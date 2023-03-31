@@ -7,7 +7,9 @@ const checkForValidationErrors = require('../middlewares/checkForValidationError
 
 const {
     createAccount,
-    getAllAccounts
+    getAllAccounts,
+    toggleAccountStatus,
+    changeUserRoles
 } = require('../controllers/admin');
 const haveRole = require('../middlewares/haveRole');
 
@@ -88,9 +90,21 @@ router.post('/accounts',
 );
 
 router.get('/accounts', 
+    /*checkAuthenticated,
+    haveRole('ADMIN'),*/
+    getAllAccounts
+);
+
+router.put('/accounts/:id/active', 
     checkAuthenticated,
     haveRole('ADMIN'),
-    getAllAccounts
+    toggleAccountStatus
+);
+
+router.put('/accounts/:id/roles', 
+    checkAuthenticated,
+    haveRole('ADMIN'),
+    changeUserRoles
 );
 
 module.exports = router;

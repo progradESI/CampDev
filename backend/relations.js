@@ -102,7 +102,7 @@ Projet.encadreurs = Projet.belongsToMany(Utilisateur, {
 });
 
 Utilisateur.projetsEncadrées = Utilisateur.belongsToMany(Projet, {
-    as:'encadreurs',
+    as:'projetsEncadrées',
     foreignKey:'idEncadreur',
     foreignKeyConstraint:true,
     through: Encadrement

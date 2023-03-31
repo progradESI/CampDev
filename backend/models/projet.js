@@ -30,7 +30,8 @@ const Projet = sequelize.define('projets', {
     },
     idChef: {
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:false,
+        unique: true
     },
     type: {
         type:DataTypes.ENUM('STARTUP','BREVET'),

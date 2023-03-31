@@ -42,14 +42,22 @@ const errorHandler = (err,req,res,next) => {
 
 const authRouter = require('./routes/auth');
 const adminRouter = require('./routes/admin');
+const sdsRouter = require('./routes/sds');
+const comiteRouter = require('./routes/comite');
+const incubateurRouter = require('./routes/incubateur');
+const encadreurRouter = require('./routes/encadreur');
 const Compte = require('./models/compte');
 
 app.use('/v1/auth/', authRouter);
 app.use('/v1/admin/', adminRouter);
-app.get('/', async (req,res,next) => {
-    
-    res.status(http_status.OK).json(req.query.and);
+app.use('/v1/sds', sdsRouter);
+app.use('/v1/comite', comiteRouter);
+app.use('/v1/incubateur', incubateurRouter);
+app.use('/v1/encadreurs', encadreurRouter);
 
+app.get('/', async (req,res,next) => {
+    const compte = await Compte.findByPk(13);
+    res.status(200).json('hello');
 });
 
 // use the error handler
