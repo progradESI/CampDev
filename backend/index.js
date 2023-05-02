@@ -87,7 +87,7 @@ async function main() {
             WHERE membres_de_projets.idCompte=comptes.idCompte;
         `);*/
     } catch(err) {
-        console.log(err);
+        console.log("there is an error");
     }
 }
 
